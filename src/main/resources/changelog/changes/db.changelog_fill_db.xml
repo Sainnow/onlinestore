@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="fill_user" author="Eugen Yun">
+        <insert tableName="user">
+            <column name="username" value="User1"/>
+            <column name="phone" value="123"/>
+            <column name="password" value="$2a$04$4YRhVaw8.2XtMswsVgy1Ke6rK015U7eaRcC.YXGEivZR8UnIMbi/."/>
+            <column name="email" value="user1@gmail.com"/>
+            <column name="gender" value="male"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="User2"/>
+            <column name="phone" value="456"/>
+            <column name="password" value="$2a$04$jUgUwvp4GisXogOXUxkFPuggTmLA9hIcawZplWDlFxmxb49W64T/u"/>
+            <column name="email" value="user2@gmail.com"/>
+            <column name="gender" value="female"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="admin"/>
+            <column name="phone" value="789"/>
+            <column name="password" value="$2a$04$vCdT5IXRPQ89s/S7Ued90elKHeDr/wvkK4yzQQ3u8BriZ9wZy7uWG"/>
+            <column name="email" value="admin@gmail.com"/>
+            <column name="gender" value="male"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="User4"/>
+            <column name="phone" value="012"/>
+            <column name="password" value="$2a$04$onhhylF13iVPW375slG0bOXWDMMb5Au.PO1suG5sxDKMlXKXqQz4m"/>
+            <column name="email" value="user4@gmail.com"/>
+            <column name="gender" value="female"/>
+            <column name="status" value="BANNED"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="User5"/>
+            <column name="phone" value="345"/>
+            <column name="password" value="$2a$04$Qq1z2XH/thLlTpwBgR80buYDj1FMaTYi3G167KtxscUV9FK.EY/MS"/>
+            <column name="email" value="user5@gmail.com"/>
+            <column name="gender" value="male"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_credit_card" author="Eugen Yun">
+        <insert tableName="credit_card">
+            <column name="number" value="123123123"/>
+            <column name="owner_name" value="INSTANT_CARD"/>
+            <column name="cvc" value="369"/>
+            <column name="epriration_date" value="2022-06-09"/>
+        </insert>
+        <insert tableName="credit_card">
+            <column name="number" value="456456456"/>
+            <column name="owner_name" value="USER2_CARD"/>
+            <column name="cvc" value="693"/>
+            <column name="epriration_date" value="2022-09-09"/>
+        </insert>
+        <insert tableName="credit_card">
+            <column name="number" value="233242319"/>
+            <column name="owner_name" value="INSTANT_CARD"/>
+            <column name="cvc" value="123"/>
+            <column name="epriration_date" value="2022-07-09"/>
+        </insert>
+        <insert tableName="credit_card">
+            <column name="number" value="123123349"/>
+            <column name="owner_name" value="INSTANT_CARD"/>
+            <column name="cvc" value="456"/>
+            <column name="epriration_date" value="2022-07-09"/>
+        </insert>
+        <insert tableName="credit_card">
+            <column name="number" value="12334123"/>
+            <column name="owner_name" value="INSTANT_CARD"/>
+            <column name="cvc" value="789"/>
+            <column name="epriration_date" value="2022-08-09"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_order" author="Eugen Yun">
+        <insert tableName="order">
+            <column name="user_id" value="1"/>
+            <column name="area" value="Grodno"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Grodno/Devetovka"/>
+            <column name="postal_code" value="123456"/>
+            <column name="date" value="2022-09-09"/>
+            <column name="price" value="123"/>
+        </insert>
+        <insert tableName="order">
+            <column name="user_id" value="2"/>
+            <column name="area" value="Grodno"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Grodno/Devetovka"/>
+            <column name="postal_code" value="123456"/>
+            <column name="date" value="2022-07-09"/>
+            <column name="price" value="1234"/>
+        </insert>
+        <insert tableName="order">
+            <column name="user_id" value="4"/>
+            <column name="area" value="Grodno"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Grodno/Devetovka"/>
+            <column name="postal_code" value="123456"/>
+            <column name="date" value="2022-07-09"/>
+            <column name="price" value="1234"/>
+        </insert>
+        <insert tableName="order">
+            <column name="user_id" value="3"/>
+            <column name="area" value="Grodno"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Grodno/Vishne"/>
+            <column name="postal_code" value="123234"/>
+            <column name="date" value="2022-07-09"/>
+            <column name="price" value="1234"/>
+        </insert>
+        <insert tableName="order">
+            <column name="user_id" value="5"/>
+            <column name="area" value="Grodno"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Grodno/Sovetskaia"/>
+            <column name="postal_code" value="4567"/>
+            <column name="date" value="2022-07-09"/>
+            <column name="price" value="1234"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_provider" author="Eugen Yun">
+        <insert tableName="provider">
+            <column name="name" value="Nike"/>
+            <column name="phone_number" value="12345678"/>
+            <column name="email" value="nike@gmail.com"/>
+        </insert>
+        <insert tableName="provider">
+            <column name="name" value="Apple"/>
+            <column name="phone_number" value="12334543"/>
+            <column name="email" value="apple@gmail.com"/>
+        </insert>
+        <insert tableName="provider">
+            <column name="name" value="Lenovo"/>
+            <column name="phone_number" value="45353224"/>
+            <column name="email" value="lenovo@gmail.com"/>
+        </insert>
+        <insert tableName="provider">
+            <column name="name" value="MSI"/>
+            <column name="phone_number" value="435345343"/>
+            <column name="email" value="msi@gmail.com"/>
+        </insert>
+        <insert tableName="provider">
+            <column name="name" value="Puma"/>
+            <column name="phone_number" value="453453424"/>
+            <column name="email" value="puma@gmail.com"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_product" author="Eugen Yun">
+        <insert tableName="product">
+            <column name="name" value="product1"/>
+            <column name="price" value="123"/>
+            <column name="category" value="category1"/>
+            <column name="subcategory" value="subcategory1"/>
+            <column name="description" value="description1"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="product2"/>
+            <column name="price" value="234"/>
+            <column name="category" value="category2"/>
+            <column name="subcategory" value="subcategory2"/>
+            <column name="description" value="description2"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="product3"/>
+            <column name="price" value="345"/>
+            <column name="category" value="category3"/>
+            <column name="subcategory" value="subcategory3"/>
+            <column name="description" value="description3"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="product4"/>
+            <column name="price" value="456"/>
+            <column name="category" value="category4"/>
+            <column name="subcategory" value="subcategory4"/>
+            <column name="description" value="description4"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="product5"/>
+            <column name="price" value="567"/>
+            <column name="category" value="category5"/>
+            <column name="subcategory" value="subcategory5"/>
+            <column name="description" value="description5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_role" author="Eugen Yun">
+        <insert tableName="role">
+            <column name="rolename" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="role">
+            <column name="rolename" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_user_credit_card" author="Eugen Yun">
+        <insert tableName="user_credit_card">
+            <column name="user_id" value="1"/>
+            <column name="credit_card_id" value="1"/>
+        </insert>
+        <insert tableName="user_credit_card">
+            <column name="user_id" value="2"/>
+            <column name="credit_card_id" value="2"/>
+        </insert>
+        <insert tableName="user_credit_card">
+            <column name="user_id" value="3"/>
+            <column name="credit_card_id" value="4"/>
+        </insert>
+        <insert tableName="user_credit_card">
+            <column name="user_id" value="4"/>
+            <column name="credit_card_id" value="3"/>
+        </insert>
+        <insert tableName="user_credit_card">
+            <column name="user_id" value="5"/>
+            <column name="credit_card_id" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_order_product" author="Eugen Yun">
+        <insert tableName="order_product">
+            <column name="order_id" value="1"/>
+            <column name="product_id" value="1"/>
+        </insert>
+        <insert tableName="order_product">
+            <column name="order_id" value="2"/>
+            <column name="product_id" value="2"/>
+        </insert>
+        <insert tableName="order_product">
+            <column name="order_id" value="3"/>
+            <column name="product_id" value="3"/>
+        </insert>
+        <insert tableName="order_product">
+            <column name="order_id" value="4"/>
+            <column name="product_id" value="4"/>
+        </insert>
+        <insert tableName="order_product">
+            <column name="order_id" value="5"/>
+            <column name="product_id" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_product_provider" author="Eugen Yun">
+        <insert tableName="product_provider">
+            <column name="product_id" value="1"/>
+            <column name="provider_id" value="1"/>
+        </insert>
+        <insert tableName="product_provider">
+            <column name="product_id" value="2"/>
+            <column name="provider_id" value="2"/>
+        </insert>
+        <insert tableName="product_provider">
+            <column name="product_id" value="3"/>
+            <column name="provider_id" value="4"/>
+        </insert>
+        <insert tableName="product_provider">
+            <column name="product_id" value="4"/>
+            <column name="provider_id" value="3"/>
+        </insert>
+        <insert tableName="product_provider">
+            <column name="product_id" value="5"/>
+            <column name="provider_id" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="fill_user_role" author="Eugen Yun">
+        <insert tableName="user_role">
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="2"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="3"/>
+            <column name="role_id" value="2"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="4"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="5"/>
+            <column name="role_id" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

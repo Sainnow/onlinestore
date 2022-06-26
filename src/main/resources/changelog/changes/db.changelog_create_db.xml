@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+
+    <changeSet id="create_user" author="Eugen Yun">
+        <createTable tableName="user">
+            <column name="id" type="bigserial" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(64)"/>
+            <column name="phone" type="varchar(64)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="email" type="varchar(64)"/>
+            <column name="gender" type="varchar(30)"/>
+            <column name="status" type="varchar(30)" defaultValue="ACTIVE"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="create_credit_card" author="Eugen Yun">
+        <createTable tableName="credit_card">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="varchar(64)"/>
+            <column name="owner_name" type="varchar(64)"/>
+            <column name="cvc" type="int4"/>
+            <column name="epriration_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_role" author="Eugen Yun">
+        <createTable tableName="role">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="rolename" type="varchar(64)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_order" author="Eugen Yun">
+        <createTable tableName="order">
+            <column name="id" type="bigserial" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint"/>
+            <column name="area" type="varchar(64)"/>
+            <column name="city" type="varchar(64)"/>
+            <column name="address" type="varchar(64)"/>
+            <column name="postal_code" type="varchar(64)"/>
+            <column name="date" type="timestamp"/>
+            <column name="price" type="real"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="order"
+                                 baseColumnNames="user_id"
+                                 constraintName="order_user_fkey"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_provider" author="Eugen Yun">
+        <createTable tableName="provider">
+            <column name="id" type="bigserial" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)"/>
+            <column name="phone_number" type="varchar(64)"/>
+            <column name="email" type="varchar(64)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_product" author="Eugen Yun">
+        <createTable tableName="product">
+            <column name="id" type="bigserial" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)"/>
+            <column name="price" type="bigint"/>
+            <column name="category" type="varchar(64)"/>
+            <column name="subcategory" type="varchar(64)"/>
+            <column name="description" type="varchar" />
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="create_user_credit_card" author="Eugen Yun">
+        <createTable tableName="user_credit_card">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_card_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="user_credit_card"
+                                 baseColumnNames="user_id"
+                                 constraintName="user_credit_card_user_fkey"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_credit_card"
+                                 baseColumnNames="credit_card_id"
+                                 constraintName="user_credit_card_credit_card_fkey"
+                                 referencedTableName="credit_card"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_order_product" author="Eugen Yun">
+        <createTable tableName="order_product">
+            <column name="order_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="order_product"
+                                 baseColumnNames="order_id"
+                                 constraintName="order_product_order_fkey"
+                                 referencedTableName="order"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="order_product"
+                                 baseColumnNames="product_id"
+                                 constraintName="order_product_product_fkey"
+                                 referencedTableName="product"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_product_provider" author="Eugen Yun">
+        <createTable tableName="product_provider">
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provider_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="product_provider"
+                                 baseColumnNames="product_id"
+                                 constraintName="product_provider_product_fkey"
+                                 referencedTableName="product"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="product_provider"
+                                 baseColumnNames="provider_id"
+                                 constraintName="product_provider_provider_fkey"
+                                 referencedTableName="provider"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_user_role" author="Eugen Yun">
+        <createTable tableName="user_role">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="user_role"
+                                 baseColumnNames="user_id"
+                                 constraintName="user_role_user_fkey"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_role"
+                                 baseColumnNames="role_id"
+                                 constraintName="user_role_role_fkey"
+                                 referencedTableName="role"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: java-postgres
+    ports:
+      - "45432:5432"
+    expose:
+      - 5432
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: onlinestore
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+  app:
+    image: onlinestore:1.0
+    container_name: onlinestore
+    ports:
+      - "8081:9090"
+    environment:
+      POSTGRES_HOST: postgres
+    restart: always
+    links:
+      - postgres
+    depends_on:
+      - postgres

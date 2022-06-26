@@ -1,0 +1,42 @@
+package com.yuntsevich.onlinestore.model;
+
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+
+@Getter
+@Setter
+@Entity
+@Table(name = "credit_card")
+public class CreditCard extends BaseEntity {
+
+    @Column(name = "number")
+    private String number;
+
+    @Column(name = "owner_name")
+    private String ownerName;
+
+    @Column(name = "cvc")
+    private Integer cvc;
+
+    @Column(name = "epriration_date")
+    private Date eprirationDate;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },mappedBy = "creditCards")
+    private Set<User> users = new HashSet<>();
+}
